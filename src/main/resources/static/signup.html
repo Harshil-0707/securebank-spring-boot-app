@@ -1,10 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Bank - Sign Up</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            text-align: left;
+            color: rgb(232, 28, 28);
+        }
+    </style>
 </head>
+
 <body>
-$END$
+
+<div class="container">
+    <h2>Sign Up</h2>
+
+    <form>
+<!--            onsubmit="handleSubmit(event)">-->
+        <label for="name">
+            Name : <input type="text" name="name" id="name" placeholder="Enter your name" required>
+        </label>
+
+        <label for="email">
+            Email : <input type="email" name="email" id="email" placeholder="Enter your email" required>
+        </label>
+        <p class="error" id="emailError"></p>
+
+        <label for="phoneNumber">
+            Phone Number : <input type="text" name="phoneNumber" id="phoneNumber"
+                                  placeholder="Enter your phone number" required minlength="10" maxlength="10">
+        </label>
+        <p class="error" id="phoneNumberError"></p>
+
+        <label for="password">
+            Password : <input type="password" id="password" name="password" placeholder="Create your password"
+                              required minlength="6" maxlength="8">
+        </label>
+        <p class="error" id="passwordError"></p>
+
+        <p class="error" id="deplicateError"></p>
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <a href="/">Login</a></p>
+</div>
+
 </body>
+
+<!--<script>-->
+<!--    function handleSubmit(e) {-->
+<!--        e.preventDefault();-->
+
+<!--        const name = document.getElementById("name");-->
+<!--        const email = document.getElementById("email");-->
+<!--        const password = document.getElementById("password");-->
+<!--        const phoneNumber = document.getElementById("phoneNumber");-->
+
+<!--        const emailError = document.getElementById("emailError");-->
+<!--        const passwordError = document.getElementById("passwordError");-->
+<!--        const deplicateError = document.getElementById("deplicateError");-->
+<!--        const phoneNumberError = document.getElementById("phoneNumberError");-->
+
+<!--        const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;-->
+<!--        if (!emailRegex.test(email.value)) {-->
+<!--            emailError.textContent = "Please enter a valid Gmail address";-->
+<!--            return;-->
+<!--        } else {-->
+<!--            emailError.textContent = "";-->
+<!--        }-->
+
+<!--        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^()_\-+=])[A-Za-z\d@$!%*#?&^()_\-+=]{6,}$/;-->
+<!--        if (!passwordRegex.test(password.value)) {-->
+<!--            passwordError.textContent = "Password should have atleast one letter , number , unique character";-->
+<!--            return;-->
+<!--        } else {-->
+<!--            passwordError.textContent = "";-->
+<!--        }-->
+
+<!--        const phoneNumberRegex = /^(\+91[\-\s]?)?[6-9]\d{9}$/;-->
+<!--        if (!phoneNumberRegex.test(phoneNumber.value)) {-->
+<!--            phoneNumberError.textContent = "Invalid number";-->
+<!--            return;-->
+<!--        } else {-->
+<!--            phoneNumberError.textContent = "";-->
+<!--        }-->
+
+<!--        submitData();-->
+
+<!--        async function submitData() {-->
+
+<!--            fetch("http://localhost:8080/securebank/signup", {-->
+<!--                method: "POST",-->
+<!--                headers: {-->
+<!--                    'Content-Type': 'application/json'-->
+<!--                },-->
+<!--                body: JSON.stringify(-->
+<!--                    {-->
+<!--                        name: name.value.toLowerCase(),-->
+<!--                        email: email.value,-->
+<!--                        phoneNumber: phoneNumber.value,-->
+<!--                        password: password.value-->
+<!--                    })-->
+<!--            })-->
+<!--                .then(data => data.json())-->
+<!--                .then((data) => {-->
+<!--                    if (data.message === "Success") {-->
+<!--                        window.location.href = "http://localhost:8080/securebank/create-account";-->
+<!--                    } else {-->
+<!--                        deplicateError.textContent = data.message;-->
+<!--                    }-->
+<!--                })-->
+<!--                .catch(e => console.error('Error posting data:', e));-->
+<!--        }-->
+
+<!--    }-->
+
+<!--</script>-->
+
 </html>
